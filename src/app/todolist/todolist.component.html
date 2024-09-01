@@ -1,0 +1,33 @@
+<div class="container">
+
+    <h1>Lista de tarefas</h1>
+
+    <hr>
+    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+        <div class="form-group">
+        <label for="task">Tarefa</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Adicione uma tarefa" [(ngModel)]="task.name" name="task" required=true>
+        </div>
+        
+        <button id="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit</button>
+    </form>
+
+    <hr>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tarefa</th>
+            <th scope="col">Situação</th>
+            <th scope="col">Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of taskArray; index as i">
+            <td>{{t.taskName}}</td>
+            <td><input id="checkbox" type="checkbox"></td>
+            <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
